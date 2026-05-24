@@ -1,0 +1,78 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كويز المحاسبة الاحترافي التفاعلي</title>
+    <!-- تضمين مكتبة Tailwind CSS للتصميم العصري -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* إضافة حركات ناعمة وتدرجات النيون لتجربة بصرية غامرة */
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        @keyframes confetti-fall {
+            0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+        .confetti-particle {
+            position: absolute;
+            pointer-events: none;
+            animation: confetti-fall linear forwards;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100 font-sans flex flex-col justify-between overflow-x-hidden relative selection:bg-purple-500 selection:text-white">
+    <!-- تأثيرات نيون في الخلفية لجمالية بصرية -->
+    <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-purple-900/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-indigo-900/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <div id="confetti-container" class="absolute inset-0 pointer-events-none overflow-hidden z-30"></div>
+    <!-- ترويسة الصفحة -->
+    <header class="w-full max-w-5xl mx-auto px-5 py-6 flex items-center justify-between z-20">
+        <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-purple-500 to-indigo-500 flex items-center justify-center shadow-lg shadow-purple-500/30 transform hover:scale-105 transition-transform duration-300">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" strokeWidth="2.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                </svg>
+            </div>
+            <div>
+                <h1 class="text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-slate-300 tracking-tight">
+                    اختبار المحاسبة الذكي
+                </h1>
+                <p class="text-[11px] text-purple-400 font-bold tracking-wide uppercase">التسويات الجردية والإهلاك</p>
+            </div>
+        </div>
+        <!-- أداة كتم / تشغيل الصوت التفاعلي -->
+        <button id="toggle-sound-btn" class="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white transition-all transform active:scale-95" title="كتم الصوت">
+            <svg id="sound-icon-on" class="w-5 h-5 text-emerald-400 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path>
+            </svg>
+            <svg id="sound-icon-off" class="w-5 h-5 text-rose-400 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15zm11.364-3l2.828 2.828m0-2.828L16.95 14.828"></path>
+            </svg>
+        </button>
+    </header>
+    <!-- المحتوى الرئيسي للموقع -->
+    <main class="flex-grow flex items-center justify-center p-4 z-20">
+        <div class="w-full max-w-2xl">
+            <!-- 1. شاشة الترحيب والبدء -->
+            <div id="welcome-screen" class="glass-panel p-8 md:p-12 rounded-3xl border border-purple-500/20 shadow-[0_0_30px_rgba(168,85,247,0.1)] text-center transition-all duration-500">
+                <span class="inline-flex items-center gap-1.5 py-1 px-3.5 rounded-full text-[11px] font-black tracking-wider text-purple-400 bg-purple-500/10 border border-purple-500/20 mb-6">
+                    <span class="h-2 w-2 rounded-full bg-purple-400 animate-ping"></span>
+                    إصدار تفاعلي فائق الاحترافية
+                </span>
+                <h2 class="text-3xl md:text
